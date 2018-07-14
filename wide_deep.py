@@ -253,7 +253,7 @@ def train():
 
         # master do evaluation
         # you should set eval_steps is 1 or smaller,
-        # and set eval_batch_size is more bigger.
+        # and set eval_batch_size is all eval data or more bigger.
         # if it will evaluate much steps,
         # for cheackpoint life circle, it only keep 5 last .ckpt for default(you can customize).
         # and the next step's batch can't to evaluate.

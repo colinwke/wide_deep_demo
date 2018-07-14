@@ -3,25 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1c02d0c7-cf57-4451-9c77-b745995341c3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/census_data/50K" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/census_data/adult.data" beforeDir="false" afterPath="$PROJECT_DIR$/census_data/adult.data" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/census_data/adult.test" beforeDir="false" afterPath="$PROJECT_DIR$/census_data/adult.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/census_model/checkpoint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/census_model/events.out.tfevents.1516264865.lapis-hongdeMacbook-Pro.local" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/census_model/events.out.tfevents.1516264928.lapis-hongdeMacbook-Pro.local" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/census_model/events.out.tfevents.1516265132.lapis-hongdeMacbook-Pro.local" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/census_model/graph.pbtxt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/census_model/model.ckpt-1.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/census_model/model.ckpt-1.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/census_model/model.ckpt-1.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/census_model/model.ckpt-2.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/census_model/model.ckpt-2.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/census_model/model.ckpt-2.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_download.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ps.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rsync.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wide_deep_test.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wide_deep_test.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -49,8 +30,8 @@
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
+            <state relative-caret-position="285">
+              <caret line="58" column="22" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -191,6 +172,16 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -232,8 +223,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
+        <state relative-caret-position="285">
+          <caret line="58" column="22" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
         </state>
       </provider>
     </entry>

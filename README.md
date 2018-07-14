@@ -56,6 +56,7 @@ ValueError: Could not find trained model in model_dir: {your_model_dir}.
         # and the next step's batch can't to evaluate.
         # and it will raise a error:
         # ValueError: Could not find trained model in model_dir: {your_model_dir}.
+        # more detail: https://www.tensorflow.org/api_docs/python/tf/estimator/RunConfig
         if FLAGS.job_name == "master":
             try:
                 results = model.evaluate(input_fn=lambda: input_fn(

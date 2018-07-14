@@ -277,7 +277,7 @@ def train():
 
 
 def main(_):
-    if FLAGS.environment:
+    if FLAGS.is_distributed:
         # update to master node
         # cluster must including a master node,
         # and master node must be the first worker node,

@@ -1,3 +1,86 @@
+# the example of tensorflow high level `tf.estimator.Estimator` API distributed implement.
+**fix with two error.**
+
+master node error.
+ValueError: If "cluster" is set in TF_CONFIG, it must have one "chief" node.
+InvalidArgumentError: /job:worker/replica:0/task:0/device:CPU:0 unknown device.
+
+``` python
+        # line 280-309
+        # update to master node
+        # cluster must including a master node,
+        # and master node must be the first worker node,
+        # and each next worker node index subtract 1.
+        # if not contain a master node, it will raise value error:
+        # ValueError: If "cluster" is set in TF_CONFIG, it must have one "chief" node.
+        # if the first worker node is not master node, it will raise value error:
+        # InvalidArgumentError: /job:worker/replica:0/task:0/device:CPU:0 unknown device.
+        # if you specific the master node, just comment the condition code.
+        if FLAGS.job_name == "worker":
+            if FLAGS.task_index == 0:
+                tf.logging.info("update! worker to master, task index = 0.")
+                FLAGS.job_name = "master"
+            else:
+                tf.logging.info("update! worker index subtract 1.")
+                FLAGS.task_index = FLAGS.task_index - 1
+
+        # distribution configuration
+        ps_hosts = FLAGS.ps_hosts.split(",")
+        worker_hosts = FLAGS.worker_hosts.split(",")
+
+        # cluster
+        cluster = dict()
+        cluster["ps"] = ps_hosts
+
+        if len(worker_hosts) == 1:
+            cluster["master"] = worker_hosts[:1]
+        else:
+            cluster["master"] = worker_hosts[:1]
+            cluster["worker"] = worker_hosts[1:]
+```
+
+can't evaluate error.
+ValueError: Could not find trained model in model_dir: {your_model_dir}.
+
+``` python
+        # line 254-275
+        # master do evaluation
+        # you should set eval_steps is 1 or smaller,
+        # and set eval_batch_size is more bigger.
+        # if it will evaluate much steps,
+        # for cheackpoint life circle, it only keep 5 last .ckpt for default(you can customize).
+        # and the next step's batch can't to evaluate.
+        # and it will raise a error:
+        # ValueError: Could not find trained model in model_dir: {your_model_dir}.
+        if FLAGS.job_name == "master":
+            try:
+                results = model.evaluate(input_fn=lambda: input_fn(
+                    FLAGS.test_data, 1, False, _NUM_EXAMPLES['validation']), steps=1)
+
+                # Display evaluation metrics
+                tf.logging.info("Results at epoch {0}".format((n + 1) * FLAGS.epochs_per_eval))
+                tf.logging.info("================================================================")
+
+                for key in sorted(results):
+                    tf.logging.info("{0}: {1:.4f}".format(key, results[key]).replace(".0000", ""))
+            except Exception as e:
+                tf.logging.info("""================================================================\n
+                {0}\n================================================================""".format(str(e)))
+```
+
+and update the running command.
+
+``` bash
+python wide_deep.py \
+    --model_dir=${model_dir} \
+    --ps_hosts="$PS" \
+    --worker_hosts="$WORKER" \
+    --job_name="$JOB_NAME" \
+    --task_index="$TASK_INDEX"
+```
+
+final, thanks @Lapis-Hong 's work!
+
 # Predicting Income with the Census Income Dataset
 ## Overview
 The [Census Income Data Set](https://archive.ics.uci.edu/ml/datasets/Census+Income) contains over 48,000 samples with attributes including age, occupation, education, and income (a binary label, either `>50K` or `<=50K`). The dataset is split into roughly 32,000 training and 16,000 testing samples.

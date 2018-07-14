@@ -1,8 +1,11 @@
-# the example of tensorflow high level `tf.estimator.Estimator` API distributed implement.
+#### the example of tensorflow high level `tf.estimator.Estimator` API distributed implement.
+
 **fix with two error.**
 
 master node error.
+
 ValueError: If "cluster" is set in TF_CONFIG, it must have one "chief" node.
+
 InvalidArgumentError: /job:worker/replica:0/task:0/device:CPU:0 unknown device.
 
 ``` python
@@ -40,13 +43,14 @@ InvalidArgumentError: /job:worker/replica:0/task:0/device:CPU:0 unknown device.
 ```
 
 can't evaluate error.
+
 ValueError: Could not find trained model in model_dir: {your_model_dir}.
 
 ``` python
         # line 254-275
         # master do evaluation
         # you should set eval_steps is 1 or smaller,
-        # and set eval_batch_size is more bigger.
+        # and set eval_batch_size is all eval data or more bigger.
         # if it will evaluate much steps,
         # for cheackpoint life circle, it only keep 5 last .ckpt for default(you can customize).
         # and the next step's batch can't to evaluate.
@@ -79,7 +83,7 @@ python wide_deep.py \
     --task_index="$TASK_INDEX"
 ```
 
-final, thanks @Lapis-Hong 's work!
+final, thanks [@Lapis-Hong](https://github.com/Lapis-Hong/wide_deep_demo)'s work!
 
 # Predicting Income with the Census Income Dataset
 ## Overview
